@@ -133,3 +133,7 @@ const StallHolderSchema = mongoose.Schema({
   //     required: false,
   //   },
 });
+
+const StallHolder = mongoose.model("StallHolder", StallHolderSchema);
+
+module.exports = StallHolder

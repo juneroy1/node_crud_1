@@ -12,6 +12,8 @@ app.use(express.urlencoded({ extended: false }));
 // apis
 app.use("/api/products", productRoutes);
 app.use("/api/stall_holders", stallHolderRoutes);
+
+// connect to monggo db
 mongoose
   .connect(
     "mongodb+srv://eroyjune:i7w1DYj4QAftEAB7@cluster1.hspuxbr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1"
@@ -25,6 +27,7 @@ mongoose
   .catch(() => {
     console.log("connectionfailed");
   });
+  
 
 // app.get('/', (req, res) => {
 //     res.send('hello from node api')

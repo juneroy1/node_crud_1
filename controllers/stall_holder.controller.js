@@ -20,8 +20,18 @@ const getStallHolderById = async (req, res) => {
     }
 }
 
+const createStallHolder = async (req, res) => {
+    try {
+        const stall_holder = await StallHolder.create(req.body);
+        res.status(200).json({message: "Successfully created new stall holder", stall_holder});
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
+}
+
 
 module.exports = {
   getStallHolders,
   getStallHolderById,
+  createStallHolder,
 };

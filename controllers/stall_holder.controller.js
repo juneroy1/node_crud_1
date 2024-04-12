@@ -29,9 +29,32 @@ const createStallHolder = async (req, res) => {
     }
 }
 
+const updateStallHolderById = async(req, res) => {
+    try {
+        const {id } = req.params
+        const stall_holder = await StallHolder.findByIdAndUpdate(id, req.body)
+        if (!stall_holder) {
+            res.status(400).json({message: "Stall Holder not found"})
+        }
+
+        const update_stall_holder = await StallHolder.findById(id)
+
+        res
+          .status(200)
+          .json({
+            message: "Stallholder updated successfully",
+            stall_holder: update_stall_holder,
+          });
+
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
+}
+
 
 module.exports = {
   getStallHolders,
   getStallHolderById,
   createStallHolder,
+  updateStallHolderById,
 };

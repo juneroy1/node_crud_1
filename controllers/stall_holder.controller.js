@@ -51,10 +51,26 @@ const updateStallHolderById = async(req, res) => {
     }
 }
 
+const deleteStallHolderById = async(req, res) => {
+    try {
+        const { id} = req.params
+        const stall_holder = await StallHolder.findByIdAndDelete(id)
+        if (!stall_holder) {
+            res.status(404).json({message: "Stall holder not found"})
+
+        }
+
+        res.status(200).json({message: "Stall Deleted"})
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
+}
+
 
 module.exports = {
   getStallHolders,
   getStallHolderById,
   createStallHolder,
   updateStallHolderById,
+  deleteStallHolderById,
 };

@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const productRoutes = require("./routes/products.route.js");
+const stallHolderRoutes = require("./routes/stall_holder.route.js")
 const app = express();
 
 // MIDDLEWARE
@@ -10,6 +11,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // apis
 app.use("/api/products", productRoutes);
+app.use("/api/stall_holders", stallHolderRoutes);
 mongoose
   .connect(
     "mongodb+srv://eroyjune:i7w1DYj4QAftEAB7@cluster1.hspuxbr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1"

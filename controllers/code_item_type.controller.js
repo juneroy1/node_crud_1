@@ -50,10 +50,26 @@ const updateCodeItemType = async (req, res) => {
     }
 }
 
+const deleteCodeItemType = async(req, res) => {
+    try {
+        const {id} = req.params
+        const code_item_type = await CodeItemType.findByIdAndDelete(id)
+
+        if (!code_item_type) {
+            res.status(404).json({message: "Code item not found"})
+        }
+
+        res.status(200).json({message: "Successfully deleted"})
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
+}
+
 
 module.exports = {
   getCodeItemTypes,
   getCodeItemTypeById,
   createCodeItemType,
   updateCodeItemType,
+  deleteCodeItemType,
 };

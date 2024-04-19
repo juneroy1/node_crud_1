@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const productRoutes = require("./routes/products.route.js");
 const stallHolderRoutes = require("./routes/stall_holder.route.js")
+const codeItemTypeRoutes = require("./routes/code_item_type.route.js");
 const app = express();
 
 // MIDDLEWARE
@@ -12,6 +13,7 @@ app.use(express.urlencoded({ extended: false }));
 // apis
 app.use("/api/products", productRoutes);
 app.use("/api/stall_holders", stallHolderRoutes);
+app.use("/api/code_item_type", codeItemTypeRoutes);
 
 // connect to monggo db
 mongoose
